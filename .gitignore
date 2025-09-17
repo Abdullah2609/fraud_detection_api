@@ -1,0 +1,14 @@
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore test and cache directories
+.pytest_cache/
+
+# Ignore macOS system files
+.DS_Store
