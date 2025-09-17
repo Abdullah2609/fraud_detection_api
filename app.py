@@ -9,6 +9,7 @@ app = FastAPI(title="Fraud Detection API")
 # Load trained model
 model = joblib.load("model/fraud_model.pkl")
 
+# Define expected input schema with your real feature names
 class FraudInput(BaseModel):
     TX_HOUR: float
     TX_DOW: float
@@ -28,7 +29,8 @@ def predict(data: FraudInput):
     # Convert input into DataFrame
     df = pd.DataFrame([data.dict()])
     prediction = model.predict(df)[0]
-    
+
+    # If you want probability too (0-1)
     prob = model.predict_proba(df)[0][1]  # probability of fraud (class=1)
 
     return {
